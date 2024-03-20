@@ -1,30 +1,43 @@
-# React + TypeScript + Vite
+# React ToDo App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+CRUD de tareas en react.
 
-Currently, two official plugins are available:
+## Pasos Para ejecutar el proyecto en local.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Clonar el proyecto.
+2. Ejecutar el comando para instalar todas las librerias
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```
+yarn install
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+3. Crear archivo `.env` y colocar la url de la API como variable de entorno
+4. Ejecutar el proyecto
+
+```
+yarn dev
+```
+
+# Estructura de carpetas:
+
+-src
+
+--components
+
+--core
+
+       --api
+
+       --context
+
+       --interfaces
+
+--pages
+
+      --Login
+
+      --Home
+
+- _components_: Contiene Todos aquellos componentes que se usan más de una sola vez y son reutilizables o muy extensos.
+- _cores_: Almacena toda la logica importante tal como servicios, contexto e interfaces para ejercer el tipado extricto.
+- _pages_: Contiene 2 directorios, cada uno con un archivo index.tsx para evitar problemas de importación. Cada directorio representa una página específica de la aplicación.
