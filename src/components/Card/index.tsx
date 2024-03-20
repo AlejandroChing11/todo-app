@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { API } from "../../core/api/services/client";
 import { useAuth } from "../../core/context/hooks";
@@ -61,10 +61,6 @@ export function Card({ task, key }: CardProps) {
   const handleSave = () => {
     handleUpdate(task.id)
   }
-
-  useEffect(() => {
-    setUpdatedTask({ title: task.title, description: task.description })
-  }, [task.title, task.description])
 
   return (
     <TaskItem

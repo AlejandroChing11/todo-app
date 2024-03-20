@@ -32,7 +32,7 @@ export function TaskList() {
 
   useEffect(() => {
     getTasks()
-  }, [])
+  }, [data])
 
   return (
     <TaskListContainer>
