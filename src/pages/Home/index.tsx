@@ -51,17 +51,28 @@ export function Home() {
     }
   }
 
+
   return (
     <Container>
       <InnerContainer>
         <h1>Get Things Done!</h1>
         <TaskForm
           register={register}
+         /**
+          * It is not necessary to pass the handleSubmit function to the TaskForm component
+          * The handleSubmit function is used to trigger the form validation and submit the form data
+          * and the correct form is wrap the "onSubmit" function with the handleSubmit function
+          * for example: handleSubmit(onSubmit)
+          */
           handleSubmit={handleSubmit}
           onSubmit={onSubmit}
           errors={errors}
         />
-        <TaskList />
+        <TaskList
+          /**
+           * TaskList component needs to receive the newTask state to update the list of tasks
+           */
+        />
       </InnerContainer>
     </Container>
   )

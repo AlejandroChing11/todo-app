@@ -46,6 +46,8 @@ export function Card({ task, key }: CardProps) {
 
     } catch (err) {
       console.error(err)
+
+      // The error messages should be displayed to the user.
     }
   }
 
