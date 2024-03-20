@@ -1,6 +1,10 @@
 
 import { useForm } from 'react-hook-form'
 
+import { useNavigate } from 'react-router-dom'
+
+import { API } from '../../core/api/services/client'
+
 import {
   Button,
   Container,
@@ -12,10 +16,6 @@ import {
   Label,
 } from '../../components/commons'
 
-import { API } from '../../core/api/services/client'
-import { useNavigate } from 'react-router-dom'
-
-import './index.module.css'
 
 export function Login() {
 

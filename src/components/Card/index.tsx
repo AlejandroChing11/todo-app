@@ -3,7 +3,17 @@ import { useState } from "react";
 import { API } from "../../core/api/services/client";
 import { useAuth } from "../../core/context/hooks";
 
-import { EditTaskButton, EditTaskInput, EditTaskInputContainer, EditTaskLabel, IconButton, IconButtonContainer, TaskDescription, TaskItem, TaskTitle } from "../commons";
+import {
+  EditTaskButton,
+  EditTaskInput,
+  EditTaskInputContainer,
+  EditTaskLabel,
+  IconButton,
+  IconButtonContainer,
+  TaskDescription,
+  TaskItem,
+  TaskTitle
+} from "../commons";
 
 import { BiEditAlt, BiSolidTrashAlt } from "react-icons/bi";
 
