@@ -31,7 +31,7 @@ export function Login() {
     defaultValues: {
       email: '',
       password: '',
-      strategy: 'local'
+      strategy: 'local' //TODO: REVISAR ESTO
     }
   })
 

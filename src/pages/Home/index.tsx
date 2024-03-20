@@ -1,34 +1,50 @@
 import { useState } from 'react'
 
-import { TaskForm } from '../../components/TaskForm'
-
-import { Container, InnerContainer } from '../../components/commons'
-
-import './index.module.css'
-import { Task } from '../../core/interfaces'
 import { useForm } from 'react-hook-form'
+
 import { API } from '../../core/api/services/client'
+import { Task } from '../../core/interfaces'
+import { useAuth } from '../../core/context/hooks'
+
+import { TaskList } from '../../components/TaskList'
+import { TaskForm } from '../../components/TaskForm'
+import { Container, InnerContainer } from '../../components/commons'
 
 export function Home() {
 
   const [newTask, setNewTask] = useState<Task[]>([])
+  const { token } = useAuth()
 
   const {
     register,
     handleSubmit,
     setError,
+    reset,
     formState: { errors }
-  } = useForm<Task>()
+  } = useForm<Task>({
+    defaultValues: {
+      title: '',
+      description: '',
+      is_done: false
+    }
+  })
 
   const onSubmit = async (data: Task) => {
     try {
-      const token = localStorage.getItem('accessToken')
-      const response = await API.service('todo').create({
-        ...data, //TODO: Recuperar el token o ponerlo en un context para accederlo en toda la app y buscar la manera de mandar el auth header en la peticion
-      })
+      const response = await API.service('todo').create(
+        {
+          ...data,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      )
       setNewTask([...newTask, response])
+      reset()
     } catch (err) {
-      setError('name', {
+      setError('title', {
         type: 'manual',
         message: 'An error occurred Please Check logs'
       })
@@ -42,9 +58,10 @@ export function Home() {
         <TaskForm
           register={register}
           handleSubmit={handleSubmit}
-          errors={errors}
           onSubmit={onSubmit}
+          errors={errors}
         />
+        <TaskList />
       </InnerContainer>
     </Container>
   )
